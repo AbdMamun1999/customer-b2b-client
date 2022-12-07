@@ -1,16 +1,44 @@
 import React, { useState } from "react";
 import ViewTop from "./ViewTop";
-import { FaSlidersH } from "react-icons/fa";
+import { FaSlidersH, FaUser } from "react-icons/fa";
+import { BiHome } from "react-icons/bi";
+import { FcContacts } from "react-icons/fc";
+import { RxDashboard } from "react-icons/rx";
+import { GrStackOverflow } from "react-icons/gr";
+import imgOne from "../images/Screenshot_61.png";
+import ManageOrder from "./ManageOrder";
 
 const ManageOrders = () => {
   const [allTime, setAllTime] = useState(true);
   const [today, setToday] = useState(false);
   const [yesterday, setYesterday] = useState(false);
 
-
+  const datas = [
+    {
+      name: "Sitem",
+      img: imgOne,
+      status: "Paid",
+      price: 10012,
+      color: "#ffb100",
+    },
+    {
+      name: "Sitem",
+      img: imgOne,
+      status: "DDD",
+      price: 10012,
+      color: "#ff6a00",
+    },
+    {
+      name: "Sitem",
+      img: imgOne,
+      status: "DDD",
+      price: 10012,
+      color: "#00b600",
+    },
+  ];
 
   return (
-    <div className="w-[30%] px-8 pt-8 pb-4 bg-white rounded-t-[50px]">
+    <div className="w-[30%] px-8 pt-8 pb-0 bg-white rounded-t-[50px]">
       <div>
         <ViewTop />
         <div className="bg-[#0170ba] px-3 py-3">
@@ -22,7 +50,7 @@ const ManageOrders = () => {
               <FaSlidersH size={26} color={"white"} />
             </span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-center">
             <input
               className="px-4 outline-none border-none rounded w-[80%] py-2"
               type="text"
@@ -65,14 +93,42 @@ const ManageOrders = () => {
         </div>
       </div>
       <div className=" bg-[#eeeeee]">
-        <div className="flex flex-row justify-between">
-          <h6>Order 4G82T0 </h6>
-          <p>Today 11:11 PM</p>
+        <div className="flex flex-col gap-y-3 p-5  pt-0">
+          {datas.map((data, index) => (
+            <ManageOrder key={index + 1} data={data} />
+          ))}
         </div>
-        <div className="flex flex-col gap-y-3 p-5">
-          {/* {datas.map((data, index) => (
-          <CustomerList key={index + 1} data={data} />
-        ))} */}
+      </div>
+      <div className="flex justify-between items-center py-2">
+        <div className="flex items-center flex-col">
+          <span>
+            <BiHome size={36} />
+          </span>
+          <h6 className="font-bold">Home</h6>
+        </div>
+        <div className="flex items-center flex-col">
+          <span>
+            <FcContacts size={36} />
+          </span>
+          <h6 className="font-bold">Orders</h6>
+        </div>
+        <div className="flex items-center flex-col">
+          <span>
+            <RxDashboard size={36} />
+          </span>
+          <h6 className="font-bold">Products</h6>
+        </div>
+        <div className="flex items-center flex-col">
+          <span>
+            <GrStackOverflow size={36} />
+          </span>
+          <h6 className="font-bold">Message</h6>
+        </div>
+        <div className="flex items-center flex-col">
+          <span>
+            <FaUser size={36} />
+          </span>
+          <h6 className="font-bold">Account</h6>
         </div>
       </div>
     </div>
